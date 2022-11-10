@@ -33,7 +33,7 @@
             <div class="col-xl-8">
                 <!-- Account details card-->
                 <div class="card mb-4">
-                    <div class="card-header">Budget Create</div>
+                    <div class="card-header">Budget Create <span class="text-right "> <strong>Today's Date </strong>{{date('d--M--Y')}}</span></div>
                     <div class="card-body">
                         <form method="POST" action="/budget">
                             <!-- Form Group (username)-->

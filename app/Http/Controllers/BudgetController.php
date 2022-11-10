@@ -16,11 +16,13 @@ class BudgetController extends Controller
     public function index()
     {
         $budgets = Budget::all();
+        $ThisMonthBudget = Budget::whereMonth('created_at', '=', date('m'))->sum('budget_amount');
         $Totalbudgets = Budget::all()->sum('budget_amount');
         $lastMonth = Budget::whereMonth('created_at',6)->sum('budget_amount');
+
 //        dd($lastMonth);
 //        dd($budgets);
-        return view('budget.index',compact('budgets','Totalbudgets','lastMonth'));
+        return view('budget.index',compact('budgets','ThisMonthBudget','Totalbudgets','lastMonth'));
     }
 
     /**

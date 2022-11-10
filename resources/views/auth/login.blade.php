@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container d-flex flex-column ingia ">
+    <div class="container d-flex flex-column ingia box  ">
         <div class="row vh-100">
             <div class="col-sm-10 col-md-8 col-lg-9  mx-auto d-table h-100">
                 <div class="d-table-cell align-middle">

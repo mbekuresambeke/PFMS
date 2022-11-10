@@ -25,7 +25,7 @@
                             <h2>Latest Budget</h2>
                         </div>
                         <div class="card-body">
-                            <h2>{{$lastMonth}}</h2>
+                            <h2>TSH: {{number_format($ThisMonthBudget,2)}}</h2>
                         </div>
                     </div>
                 </div>
