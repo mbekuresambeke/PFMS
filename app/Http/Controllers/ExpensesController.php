@@ -21,7 +21,8 @@ class ExpensesController extends Controller
     {
         $TotalExpenses =  Expenses::with('expenses_category_name')->sum('expenses_amount');
         $DailyExpenses =  Expenses::whereDay('created_at', '=', date('d'))->sum('expenses_amount');
-        $expenses = Expenses::with('ExpensesCategory')->where('user_id',auth::user()->id)->orderBy('created_at','desc')->get();
+        // dd($DailyExpenses);
+        $expenses = Expenses::with('ExpensesCategory')->where('user_id',auth::user()->id)->orderBy('created_at','desc')->paginate(15);
         $WeeklyExpenses = Expenses::where( 'created_at', '>', Carbon::now()->subDays(7))->sum('expenses_amount');
         $MonthlyExpenses = Expenses::whereMonth('created_at',date('m'))->sum('expenses_amount');
         return view('expenses.index',compact('TotalExpenses','DailyExpenses','WeeklyExpenses','MonthlyExpenses','expenses'));

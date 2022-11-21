@@ -6,6 +6,14 @@
             <div class="card">
                 <div class="card-header"><strong>Hi {{auth::user()->name}}</strong>  Create New Expenses</div>
                 <div class="card-body mt-2 ">
+                    @if(session()->has('success'))
+                    <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
+                        <i class="bi-check-circle-fill"></i>
+                      <strong class="mx-2">{{ session('success') }}</strong> 
+                      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                  </div>
+                  @endif
+
                     <form action="/expenses" method="POST" >
                         @csrf
                         <div class="mt-2 ">

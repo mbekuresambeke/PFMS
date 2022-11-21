@@ -21,7 +21,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/blog', [App\Http\Controllers\BlogController::class, 'blog'])->name('blog');
-Route::resource('/budget/', App\Http\Controllers\BudgetController::class);
-Route::resource('/expensesCategory/', App\Http\Controllers\ExpensesCategoryController::class);
-Route::resource('/expenses', App\Http\Controllers\ExpensesController::class);
+
+Route::middleware('auth')->group(function () {
+    Route::resource('/budget/', App\Http\Controllers\BudgetController::class);
+    Route::resource('/expensesCategory/', App\Http\Controllers\ExpensesCategoryController::class);
+    Route::resource('/expenses', App\Http\Controllers\ExpensesController::class);
+    Route::resource('/plans', App\Http\Controllers\PlanController::class);
+
+});
 

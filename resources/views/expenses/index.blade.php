@@ -9,6 +9,9 @@
                         <h4>Daily Expenses</h4>
                         <div class="d-flex">
                             <p>Tsh {{number_format($DailyExpenses,2)}}</p>
+                            {{-- @foreach ($DailyExpenses as $dailyExp )
+                                {{$dailyExp>id}}
+                            @endforeach --}}
                         </div>
                     </div>
                 </div>
@@ -39,39 +42,47 @@
 
         <section class="mt-5  p-3  border ">
             <div class="row">
-                <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="col-lg-12 col-sm-12">
 
                     <table class="table mb-0 table-responsive table-responsive{-sm|-md|-lg|-xl} table-bordered  ">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Expenses Title</th>
-                            <th scope="col">Expenses Category</th>
-                            <th scope="col">Expenses Amount</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Expenses Date</th>
-                            <th scope="col">Action</th>
+                            <th>#</th>
+                            <th>Expenses Title</th>
+                            <th>Expenses Category</th>
+                            <th>Expenses Amount</th>
+                            <th>Description</th>
+                            <th>Expenses Date</th>
+                            <th colspan="2" >Action</th>
 
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($expenses as $AllExpenses)
                             <tr>
-                                <th scope="row">1</th>
+                                <th>{{$loop->index}}</th>
                                 <td>{{ $AllExpenses->expenses_title}}</td>
 {{--                                {{$item->users->name}}</strong></p>--}}
                                 <td>{{ $AllExpenses->ExpensesCategory->expenses_category_name}}</td>
                                 <td>{{number_format($AllExpenses->expenses_amount,2)}}</td>
                                 <td>{{ $AllExpenses->expenses_description}}</td>
                                 <td>{{ $AllExpenses->expenses_date}}</td>
-                                <td><a href="">Edit</a>
-                                    <a href="">View</a>
-                                    <a href="">Delete</a>
+
+                                <td>
+                                    <a href="" class="text-danger btn btn-outline ">Edit</a>
+                                    <a href="" class="text-danger btn btn-outline ">View</a>
+                                    <a href="" class="text-danger btn btn-outline ">Trash</a>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
+                    <div class="mt-3 ">
+                        {{$expenses->links()}}
+
+                    </div>
+            
+
                 </div>
             </div>
         </section>
