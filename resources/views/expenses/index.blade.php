@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container m-2 p-2">
+{{-- <x-breadcrumb :paths="$currentPath" /> --}}
+    <div class="container mt-2 ">
         <section>
             <a href="/expenses/create" class="btn btn-primary px-3 py-2 ">Add Expenses</a>
             <div class="row justify-content-center mt-2 p-2 ">
@@ -39,12 +40,14 @@
                 </div>
             </div>
         </section>
+    </div>
 
-        <section class="mt-5  p-3  border ">
-            <div class="row">
-                <div class="col-lg-12 col-sm-12">
+    <div class="container m-auto">
+        <section class="mt-3  p-3  border ">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-md-12  col-sm-12">
 
-                    <table class="table mb-0 table-responsive table-responsive{-sm|-md|-lg|-xl} table-bordered  ">
+                    <table class="table mb-0 table-responsive table-sm table-responsive table-bordered  ">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -53,7 +56,7 @@
                             <th>Expenses Amount</th>
                             <th>Description</th>
                             <th>Expenses Date</th>
-                            <th colspan="2" >Action</th>
+                            <th rowspan="3">Action</th>
 
                         </tr>
                         </thead>
@@ -62,22 +65,20 @@
                             <tr>
                                 <th>{{$loop->index}}</th>
                                 <td>{{ $AllExpenses->expenses_title}}</td>
-{{--                                {{$item->users->name}}</strong></p>--}}
                                 <td>{{ $AllExpenses->ExpensesCategory->expenses_category_name}}</td>
                                 <td>{{number_format($AllExpenses->expenses_amount,2)}}</td>
                                 <td>{{ $AllExpenses->expenses_description}}</td>
-                                <td>{{ $AllExpenses->expenses_date}}</td>
-
+                                <td class="text-danger">{{ $AllExpenses->created_at->diffForHumans()}}</td>
                                 <td>
-                                    <a href="" class="text-danger btn btn-outline ">Edit</a>
-                                    <a href="" class="text-danger btn btn-outline ">View</a>
-                                    <a href="" class="text-danger btn btn-outline ">Trash</a>
+                                    <a href="/expenses/{{$AllExpenses->id}}" class="text-primary "><i class="fas fa-eye"></i> </a>
+                                    <a href="/expenses/{{$AllExpenses->id}}/edit" class="text-warning "><i class="fas fa-edit"></i> </a>
+                                    <a href="/expenses/{{$AllExpenses->id}}/delete" class="text-danger  "><i class="fas fa-trash"></i> </a>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-                    <div class="mt-3 ">
+                    <div class="mt-3  float-rightss">
                         {{$expenses->links()}}
 
                     </div>

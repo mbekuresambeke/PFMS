@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Budget;
+use App\Models\Expenses;;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $expenses = Expenses::sum('expenses_amount');
+        $expenses_count = Expenses::count();
+        $budgets = Budget::sum('budget_amount');
+        $budgets_count = Budget::count();
+        // dd($expenses_count);
+        return view('home',compact('budgets','budgets_count','expenses','expenses_count'));
     }
 }

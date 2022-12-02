@@ -15,7 +15,9 @@ class ExpensesCategoryController extends Controller
      */
     public function index()
     {
-        return view('budget_category.index');
+        $All_categories = ExpensesCategory::where('user_id',auth::user()->id)->get();
+        // dd($All_categories);
+        return view('expenses_category.index',compact('All_categories'));
     }
 
     /**

@@ -20,7 +20,7 @@ class ExpensesController extends Controller
     public function index()
     {
         $TotalExpenses =  Expenses::with('expenses_category_name')->sum('expenses_amount');
-        $DailyExpenses =  Expenses::whereDay('created_at', '=', date('d'))->sum('expenses_amount');
+        $DailyExpenses =  Expenses::whereDate('created_at', Carbon::today())->sum('expenses_amount');
         // dd($DailyExpenses);
         $expenses = Expenses::with('ExpensesCategory')->where('user_id',auth::user()->id)->orderBy('created_at','desc')->paginate(15);
         $WeeklyExpenses = Expenses::where( 'created_at', '>', Carbon::now()->subDays(7))->sum('expenses_amount');
@@ -78,7 +78,7 @@ class ExpensesController extends Controller
         $Expenses->expenses_description = $ValidExpenses['expenses_description'];
         $Expenses->expenses_date = $ValidExpenses['expenses_date'];
         $Expenses->save();
-        return back();
+        return back()->with('success','Expenses has been added Successfully');
     }
 
     /**
@@ -89,7 +89,8 @@ class ExpensesController extends Controller
      */
     public function show($id)
     {
-        //
+        $Expense = Expenses::findorFail($id);
+       return view('expenses.show',compact('Expense'));
     }
 
     /**
