@@ -51,12 +51,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
                 <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                    <img
-                        src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-                        height="15"
-                        alt="MDB Logo"
-                        loading="lazy"
-                    />
+                 PFMS
                 </a>
                 <!-- Left links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -94,13 +89,13 @@
                         aria-labelledby="navbarDropdownMenuLink"
                     >
                         <li>
-                            <a class="dropdown-item" href="#">Some news</a>
+                            <a class="dropdown-item" href="#">Blog</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">Another news</a>
+                            <a class="dropdown-item" href="#">My Profile</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">Login</a>
                         </li>
                     </ul>
                 </div>
@@ -153,8 +148,8 @@
     </nav>
     <!-- Navbar -->	</header>
 <div class="container">
-    <div class="row justify-content-end">
-        <div class="col-md-3">
+    <div class="row justify-content-between bg-secondary ">
+        <div class="col-md-6 col-lg-6 col-sm-12 p-2  bg-primary ">
             <h2>Why Saving ?</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -166,6 +161,12 @@
             </p>
             <button class="btn btn-primary btn-sm">Try It now </button>
         </div>
+        <div class="col-md-6 col-lg-6 col-sm-12 p-2  ">
+            <img src="{{asset('img/budget.png')}}" class="img-thumbnail  " alt="True Image">
+        </div>
+    </div>
+
+        <div class="row bg-success m-3 p-3 ">
         <div class="col-md-4">
             <h2>Why Budgeting ?</h2>
             <p>
@@ -193,12 +194,15 @@
 
 			</span>
         </div>
+        </div>
+
 
     </div>
+    
     <div class="row justify-content-between border mt-2  ">
         <div class="col-md-8 offset-2 text-center  ">
             <h2>lets Build Financial Management Application Here</h2>
-            <h3>  Modern, Flexible and Responsive ReactJS Admin Template</h3>
+            <h3>  Modern, Flexible and Responsive Application</h3>
             <p>
                 A professional package that comes with hunderds of UI components, forms, tables, charts, dashboards, pages and svg icons. Each one is fully customizable, responsive and easy to use.
             </p>

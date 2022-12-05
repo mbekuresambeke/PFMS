@@ -13,6 +13,10 @@
                             {{-- @foreach ($DailyExpenses as $dailyExp )
                                 {{$dailyExp>id}}
                             @endforeach --}}
+
+                           <div class="alert lert-info ">
+                            Hi {{$percentage_calculator / 100 }}
+                           </div>
                         </div>
                     </div>
                 </div>
@@ -72,7 +76,7 @@
                                 <td>
                                     <a href="/expenses/{{$AllExpenses->id}}" class="text-primary "><i class="fas fa-eye"></i> </a>
                                     <a href="/expenses/{{$AllExpenses->id}}/edit" class="text-warning "><i class="fas fa-edit"></i> </a>
-                                    <a href="/expenses/{{$AllExpenses->id}}/delete" class="text-danger  "><i class="fas fa-trash"></i> </a>
+                                    <a href="/expenses/delete/{{$AllExpenses->id}}" class="text-danger  "><i class="fas fa-trash"></i> </a>
                                 </td>
                             </tr>
                         @endforeach

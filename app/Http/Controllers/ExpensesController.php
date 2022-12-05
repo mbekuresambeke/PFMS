@@ -21,11 +21,15 @@ class ExpensesController extends Controller
     {
         $TotalExpenses =  Expenses::with('expenses_category_name')->sum('expenses_amount');
         $DailyExpenses =  Expenses::whereDate('created_at', Carbon::today())->sum('expenses_amount');
+        $TotalBudgets = budget::sum('budget_amount');
         // dd($DailyExpenses);
         $expenses = Expenses::with('ExpensesCategory')->where('user_id',auth::user()->id)->orderBy('created_at','desc')->paginate(15);
         $WeeklyExpenses = Expenses::where( 'created_at', '>', Carbon::now()->subDays(7))->sum('expenses_amount');
         $MonthlyExpenses = Expenses::whereMonth('created_at',date('m'))->sum('expenses_amount');
-        return view('expenses.index',compact('TotalExpenses','DailyExpenses','WeeklyExpenses','MonthlyExpenses','expenses'));
+        $percentage_calculator  =  $TotalBudgets - $TotalExpenses / 100;
+
+        // dd($percentage_calculator);
+        return view('expenses.index',compact('TotalExpenses','DailyExpenses','WeeklyExpenses','MonthlyExpenses','expenses','percentage_calculator'));
     }
 
     /**
@@ -124,6 +128,10 @@ class ExpensesController extends Controller
      */
     public function destroy($id)
     {
-        //
+dd(confirm('Are you sure you want to delete this item ???'));
+        $trash_expenses = Expenses::with('budgets','ExpensesCategory','users')->withTrashed()->where('id', $id)->restore();
+        dd($trash_expenses);
+
+
     }
 }
