@@ -59,28 +59,33 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center text-white ">
-            @foreach($budgets as $budget)
-            <div class="col-md-2 bg-primary  border shadow-2xl px-2 m-3 p-3 m-3  items-center ">
-                <h2>{{$budget->budget_title}}</h2>
-                <p>Amount: <small><strong>Tsh {{number_format($budget->budget_amount,2)}}</strong></small></p>
-                <p>Account Status is <code>{{$budget->budget_status ==1  ? "Active" : 0 =="inactive "}}</code></p>
-            </div>
-            @endforeach
-            <div class="col-md-2 bg-primary  border shadow-2xl px-2 m-3 p-3 m-3  items-center ">
-                <h2>This Month Budget</h2>
-                <p>Amount: <small><strong>Tsh 300,000</strong></small></p>
-                <p>Account Status is <code>Bad</code></p>
-            </div>
-            <div class="col-md-2 bg-success  border shadow-2xl px-2 m-3 p-3 m-3  items-center ">
-                <h2>This Month Budget</h2>
-                <p>Amount: <small><strong>Tsh 300,000</strong></small></p>
-                <p>Account Status is <code>Not Bad</code></p>
-            </div>
-            <div class="col-md-2 bg-secondary  border shadow-2xl px-2 m-3 p-3 m-3  items-center ">
-                <h2>This Month Budget</h2>
-                <p>Amount: <small><strong>Tsh 300,000</strong></small></p>
-                <p>Account Status is <code>Not Bad</code></p>
+        <div class="row justify-content-center text-white mt-3  ">
+            <table class="table table-bordered">
+                <tr>
+                    <th>S/N</th>
+                    <th>Budget Title</th>
+                    <th>Budget Amount</th>
+                    <th>Budget Status</th>
+                    <th>Budget Created_at</th>
+                    <th>Action</th>
+                </tr>
+                @foreach ($budgets as $budget)
+                    <tr>
+                        <td>{{$loop->index}}</td>
+                        <td>{{ $budget->budget_title }}</td>
+                        <td><small><strong>Tsh {{ number_format($budget->budget_amount, 2) }}</strong></small></td>
+                        <td> <code>{{ $budget->budget_status == 1 ? 'Active' : 0 == 'inactive ' }}</code></td>
+                        <td>{{ $budget->created_at }}</td>
+                        <td>
+                            <a href="" class="text-primary btn border">View <i class="fas fa-eye"></i></a>
+                            <a href="" class="text-warning btn border">Edit <i class="fas fa-edit"></i></a>
+                            <a href="" class="text-danger  btn border">Trash <i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+            <div class="d-flex justify-content-center">
+                {{ $budgets->links() }}
             </div>
         </div>
     </div>
