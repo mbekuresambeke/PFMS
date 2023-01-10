@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Budget;
+use App\Models\Expenses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,16 +14,23 @@ class BudgetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+    
     public function index()
     { 
         $date = \Carbon\Carbon::now();
         $lastMonthText =  $date->subMonth()->format('F'); 
         $budgetTotalSum = Budget::sum('budget_amount');
-        $budgets = Budget::paginate(10);
+        $budgets = Budget::orderBy('created_at','DESC')->paginate(10);
         $BudgetSaving  = $budgetTotalSum / 100 * 20;
         $BudgetWants  = $budgetTotalSum / 100 * 30;
         $BudgetNeeds  = $budgetTotalSum / 100 * 50;
         // dd($BudgetTenPercent);
+
+        //Amount Used Fetch 
+        
+        //End Of Used Fetch 
+
         $ThisMonthBudget = Budget::whereMonth('created_at', '=', date('m'))->sum('budget_amount');
         $Totalbudgets = Budget::all()->sum('budget_amount');
         $lastMonth = Budget::whereMonth('created_at', '=', \Carbon\Carbon::now()->subMonth()->month)->sum('budget_amount');
@@ -81,7 +89,17 @@ class BudgetController extends Controller
      */
     public function show($id)
     {
-        //
+     
+        // $user_id =  auth::user()->id;
+        
+        $budget = Budget::find($id);
+        $budget_expenses =Expenses::where('budget_id',$id)->get();
+        $budgetTwendyPer = $budget->budget_amount / 100 * 20;
+        $budgetThirtyPer = $budget->budget_amount / 100 * 30;
+        $budgetFirtyPer = $budget->budget_amount / 100 * 50;
+    
+        return view('budget.show',compact('budget','budget_expenses',
+        'budgetTwendyPer','budgetThirtyPer','budgetFirtyPer'));
     }
 
     /**

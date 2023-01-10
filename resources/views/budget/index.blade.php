@@ -59,6 +59,91 @@
                 </div>
             </div>
         </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-6 col-xl-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h5 class="text-muted fw-normal mt-0 text-truncate" title="Campaign Sent">Weekly Income</h5>
+                                <h3 class="my-2 py-1">Tsh 9,184</h3>
+                                <p class="mb-0 text-muted">
+                                    <span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i> 3.27%</span>
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-end">
+                                   <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                        </div> <!-- end row-->
+                    </div> <!-- end card-body -->
+                </div> <!-- end card -->
+            </div> <!-- end col -->
+
+            <div class="col-md-6 col-xl-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h5 class="text-muted fw-normal mt-0 text-truncate" title="New Leads">Monthly Income</h5>
+                                <h3 class="my-2 py-1">3,254</h3>
+                                <p class="mb-0 text-muted">
+                                    <span class="text-danger me-2"><i class="mdi mdi-arrow-down-bold"></i> 5.38%</span>
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-end">
+                                  <i class="fas fa-dollar"></i>
+                                </div>
+                            </div>
+                        </div> <!-- end row-->
+                    </div> <!-- end card-body -->
+                </div> <!-- end card -->
+            </div> <!-- end col -->
+
+            <div class="col-md-6 col-xl-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h5 class="text-muted fw-normal mt-0 text-truncate" title="Yearly Income">Last Month Income</h5>
+                                <h3 class="my-2 py-1">861</h3>
+                                <p class="mb-0 text-muted">
+                                    <span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i> 4.87%</span>
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-end">
+                                   <i class="fas fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div> <!-- end row-->
+                    </div> <!-- end card-body -->
+                </div> <!-- end card -->
+            </div> <!-- end col -->
+
+            <div class="col-md-6 col-xl-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h5 class="text-muted fw-normal mt-0 text-truncate" title="Booked Revenue">Yearly Revenue</h5>
+                                <h3 class="my-2 py-1">$253k</h3>
+                                <p class="mb-0 text-muted">
+                                    <span class="text-success me-2"><i class="mdi mdi-arrow-up-bold"></i> 11.7%</span>
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-end">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                            </div>
+                        </div> <!-- end row-->
+                    </div> <!-- end card-body -->
+                </div> <!-- end card -->
+            </div> <!-- end col -->
+        </div>
         <div class="row justify-content-center text-white mt-3  ">
             <table class="table table-bordered">
                 <tr>
@@ -66,7 +151,7 @@
                     <th>Budget Title</th>
                     <th>Budget Amount</th>
                     <th>Budget Status</th>
-                    <th>Budget Created_at</th>
+                    <th>Budget Posted</th>
                     <th>Action</th>
                 </tr>
                 @foreach ($budgets as $budget)
@@ -75,10 +160,10 @@
                         <td>{{ $budget->budget_title }}</td>
                         <td><small><strong>Tsh {{ number_format($budget->budget_amount, 2) }}</strong></small></td>
                         <td> <code>{{ $budget->budget_status == 1 ? 'Active' : 0 == 'inactive ' }}</code></td>
-                        <td>{{ $budget->created_at }}</td>
+                        <td>{{ $budget->created_at->diffForHumans() }}</td>
                         <td>
-                            <a href="" class="text-primary btn border">View <i class="fas fa-eye"></i></a>
-                            <a href="" class="text-warning btn border">Edit <i class="fas fa-edit"></i></a>
+                            <a href="budget/{{$budget->id}}" class="text-primary btn border">View <i class="fas fa-eye"></i></a>
+                            <a href="budget/{{$budget->id}}/edit" class="text-warning btn border">Edit <i class="fas fa-edit"></i></a>
                             <a href="" class="text-danger  btn border">Trash <i class="fas fa-trash"></i></a>
                         </td>
                     </tr>

@@ -97,6 +97,9 @@
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="/blog">{{ __('Blog') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/home">{{ __('home') }}</a>
+                            </li>
                             @if (Route::has('login'))
                                 <li class="nav-item ">
                                     <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>

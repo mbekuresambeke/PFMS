@@ -7,39 +7,51 @@
             <div class="row justify-content-center mt-2 p-2 ">
                 <div class="col-md-3 col-sm-6">
                     <div class="card">
+                        <div class="alert alert-secondary">
                         <h4>Daily Expenses</h4>
                         <div class="d-flex">
-                            <p>Tsh {{number_format($DailyExpenses,2)}}</p>
-                            {{-- @foreach ($DailyExpenses as $dailyExp )
-                                {{$dailyExp>id}}
-                            @endforeach --}}
+                            {{-- @if (count($DailyExpenses) ==0) --}}
 
-                           <div class="alert lert-info ">
-                            Hi {{$percentage_calculator / 100 }}
-                           </div>
+                                <p>Tsh {{number_format($DailyExpenses,2)}}</p>
+                            {{-- @else --}}
+                            <hr>
+                           <p>Sorry you dont have enough bandoo <i class="fas fa-box"></i></p>
+                            {{-- @endif --}}
+                
+                            <i class="fas fa-calendar m-right"></i>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card  ">
+                        <div class="alert alert-info">
+                            <h2>Weekly Expenses</h2>
+                            <p>Tsh {{number_format($WeeklyExpenses,2)}}</p>
+                            <a href="/">View Now</a>
+                        </div>
+                       
+                    </div>
+                </div>
+
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="card">
+                        <div class="alert alert-warning ">
+                        <h2>Monthly Expenses</h2>
+                        <p>Tsh {{number_format($MonthlyExpenses,2)}}</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-3 col-sm-6">
                     <div class="card">
-                        <h2>Weekly Expenses</h2>
-                        <p>Tsh {{number_format($WeeklyExpenses,2)}}</p>
-                    </div>
-                </div>
-
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="card">
-                        <h2>Monthly Expenses</h2>
-                        <p>Tsh {{number_format($MonthlyExpenses,2)}}</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3 col-sm-6">
-                    <div class="card">
+                        <div class="alert alert-success">
                         <h2>Yearly Expenses</h2>
                         <p>Tsh {{number_format($TotalExpenses,2)}}</p>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,11 +59,10 @@
     </div>
 
     <div class="container m-auto">
-        <section class="mt-3  p-3  border ">
-            <div class="row justify-content-center">
+        <section class="mt-4   border justify-content-between ">
+            <div class="row h-100">
                 <div class="col-lg-12 col-md-12  col-sm-12">
-
-                    <table class="table mb-0 table-responsive table-sm table-responsive table-bordered  ">
+                    <table class="table table-sm mb-1  table-responsive table-bordered  ">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -60,8 +71,7 @@
                             <th>Expenses Amount</th>
                             <th>Description</th>
                             <th>Expenses Date</th>
-                            <th rowspan="3">Action</th>
-
+                            <th colspan="4">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -86,8 +96,6 @@
                         {{$expenses->links()}}
 
                     </div>
-            
-
                 </div>
             </div>
         </section>

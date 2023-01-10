@@ -2,9 +2,8 @@
 
 @section('content')
     <div class="container-fluid">
-
         <!-- Title -->
-        <h2> Hi {{ auth::user()->name }},
+        <h2> Hi {{ Auth::user()->name }},
         </h2>
         <h1 class="h2">
             Welcome Back!
@@ -26,7 +25,7 @@
                            Budget Gained 
                         </p>
                     </div>
-                    <a href="/budgets" class="btn btn-secondary btn-sm btn-outline btn-block ">
+                    <a href="/budget" class="btn btn-secondary btn-sm btn-outline btn-block ">
                         Explorer More
                     </a>
                 </div>
