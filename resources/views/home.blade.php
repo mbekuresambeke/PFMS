@@ -3,11 +3,11 @@
 @section('content')
     <div class="container-fluid">
         <!-- Title -->
-        <h2> Hi {{ Auth::user()->name }},
-        </h2>
-        <h1 class="h2">
-            Welcome Back!
-        </h1>
+        <div class="col-md-6 offset-3 col-sm-12 ">
+            <h2> Hi {{ Auth::user()->name }},</h2>
+            <h1 class="h2">Welcome Back!</h1>
+            <h3 class="alert alert-primary "> Your bank cart is <i class="fa-solid fa-cart-shopping"></i> <strong> Tsh {{number_format($budgets - $expenses,2) }}</strong></h3>
+        </div>
 
         <div class="row">
             <div class="col-md-3 col-lg-3 col-sm-6">

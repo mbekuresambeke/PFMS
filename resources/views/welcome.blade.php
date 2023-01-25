@@ -45,83 +45,38 @@
                         MatumiziApp | PFMS
                     </a>
                     <!-- Left links -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Budget</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Expenses</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Saving</a>
-                        </li>
-                    </ul>
+
                     <!-- Left links -->
                 </div>
                 <!-- Collapsible wrapper -->
 
                 <!-- Right elements -->
                 @auth()
-                    <div class="d-flex align-items-center">
-                        <!-- Icon -->
-                        <a class="link-secondary me-3" href="#">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-white " href="home"><i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white " href="/"> <i class="fas fa-signing"></i> Sign
+                                Up</a>
+                        </li>
+                    </ul>
+                @endauth
 
-                        <!-- Notifications -->
-                        <div class="dropdown">
-                            <a class=" dropdown-toggle dropdown-toggle-split" href="#" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="fas fa-bell"></i>
-                                <span class="badge rounded-pill badge-notification bg-danger">1</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                                <li>
-                                    <a class="dropdown-item" href="/blog">Blog</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="/">My Profile</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="login">Login</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- Avatar -->
-
-                        <div class="dropdown">
-                            <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle"
-                                    height="25" alt="Black and White Portrait of a Man" loading="lazy" />
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-                                <li>
-                                    <a class="dropdown-item" href="/myprofile">My profile</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Settings</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Logout</a>
-                                </li>
-                            </ul>
-                        @endauth
-
-                        @guest()
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link text-white " href="login"><i class="fas fa-sign-in"></i> Login</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white " href="register"> <i class="fas fa-signing"></i> Sign
-                                        Up</a>
-                                </li>
-                            </ul>
-                        @endguest
-                    </div>
-                </div>
-                <!-- Right elements -->
+                @guest()
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-white " href="login"><i class="fas fa-sign-in"></i> Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white " href="register"> <i class="fas fa-signing"></i> Sign
+                                Up</a>
+                        </li>
+                    </ul>
+                @endguest
+            </div>
+            </div>
+            <!-- Right elements -->
             </div>
             <!-- Container wrapper -->
         </nav>
@@ -132,41 +87,12 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h1 class="mt-5">Welcome to Personal Management Application</h1>
-                <p class="lead">Learn more about our product and services you will benefits from <code>MatumiziApp </code>.</p>
-
-                <div class="card">
-                    <img src="path/to/image.jpg" class="card-img-top" alt="Card image">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                  </div>
+                <p class="lead">Learn more about our product and services you will benefits from <code>MatumiziApp
+                    </code>.</p>
+                <h1 class="card-title">MatumiziApp </h1>
+                <h3 class="card-text"><strong>Save More, <code>Spend Less</code></strong></h3>
             </div>
         </div>
-    </div>
-
-    <div class="container">
-        <div class="row" style="background-image: url({{asset('img/budgeting.jpg')}}); background-image:cover;">
-            <div class="col-lg-4">
-                <h2>Product 1</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra, ante ut mollis bibendum, magna lacus bibendum risus, id egestas elit urna eget quam.</p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Product 2</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra, ante ut mollis bibendum, magna lacus bibendum risus, id egestas elit urna eget quam.</p>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem enim odit iusto quisquam, amet sed error iure esse doloremque non et voluptate alias ad optio illum pariatur doloribus laborum excepturi.
-                </p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Product 3</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra, ante ut mollis bibendum, magna lacus bibendum risus, id egestas elit urna eget quam.</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container text-center my-5">
-        <a href="#" class="btn btn-primary">Learn More</a>
     </div>
 
     <div class="container">
@@ -179,11 +105,14 @@
                     </h5>
                     <div class="m-1 ">
                         <ul class="list-group m-2 ">
-                            <li class="list-group-item mt-2 border "><span class="badge bg-primary">1</span> Do you have
+                            <li class="list-group-item mt-2 border "><span class="badge bg-primary">1</span> Do you
+                                have
                                 any monthly budget ?</li>
-                            <li class="list-group-item mt-2 border "><span class="badge bg-info">2</span> Find Where to
+                            <li class="list-group-item mt-2 border "><span class="badge bg-info">2</span> Find Where
+                                to
                                 reduce expenses instead of increase expenses</li>
-                            <li class="list-group-item mt-2 border "><span class="badge bg-success">3</span> Find where
+                            <li class="list-group-item mt-2 border "><span class="badge bg-success">3</span> Find
+                                where
                                 you can invest for add in income </li>
                             <li class="list-group-item mt-2 border "><span class="badge bg-warning">4</span> Make
                                 Financial Fitness Quiz for get well how to prepare a budget</li>
@@ -298,7 +227,7 @@
         </div>
 
         <div class="row  m-3 p-3 " style="background-color: #FFFFFF2E;color:rgb(65, 159, 28);  ">
-            <div class="col-md-4">
+            <div class="col-md-6 ">
                 <h2>Why Budgeting ?</h2>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -310,7 +239,7 @@
                 </p>
                 <button class="btn btn-success btn-sm">Try It now </button>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <h2>Why Track Spending ?</h2>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -328,43 +257,47 @@
         </div>
 
 
-    </div>
+        <div class="row justify-content-center border mt-2" style="background-color: #2D3047; color:#FFF !important">
+            <div class="col-md-10 offset-1    text-center">
+                <h2>lets Build Financial Management Application Here</h2>
+                <div>
+                    <img src="{{ asset('assets/images/background/background-3.jpg') }}" class="img-fluid "
+                        alt="">
+                </div>
+                <h3 class="mt-3 "> Modern, Flexible and Responsive Application</h3>
+                <p>
+                    A professional package that comes with hunderds of UI components, forms, tables, charts, dashboards,
+                    pages and svg icons. Each one is fully customizable, responsive and easy to use.
+                </p>
 
-    <div class="row justify-content-center border mt-2" style="background-color: #2D3047; color:#FFF !important">
-        <div class="col-md-12  text-center  ">
-            <h2>lets Build Financial Management Application Here</h2>
-            <div>
-                <img src="{{ asset('assets/images/background/background-3.jpg') }}" class="img-fluid "
-                    alt="">
-                <p class="text-over-img">Text Over Image</p>
+                <p>
+                    Budgeting is the process of creating a plan to spend your money. This plan is called a budget.
+                    Creating
+                    a budget helps you to determine how much money you have coming in and going out, so you can make
+                    informed decisions about how to allocate your money. A budget can help you to save money, pay off
+                    debt,
+                    and achieve your financial goals.</p>
+
+                <p>There are many different ways to budget, and the right approach for you will depend on your personal
+                    financial situation, your spending habits, and your financial goals. Some common methods of
+                    budgeting
+                    include the 50/30/20 budget, the envelope method, and the zero-sum budget.</p>
+
+                <p>To create a budget, you will need to track your income and expenses. You can do this manually by
+                    keeping
+                    track of your spending in a notebook or spreadsheet, or you can use a budgeting app or software.
+                    Once
+                    you have a clear picture of your income and expenses, you can create a budget that aligns with your
+                    financial goals and helps you to make the most of your money.
+                </p>
             </div>
-            <h3> Modern, Flexible and Responsive Application</h3>
-            <p>
-                A professional package that comes with hunderds of UI components, forms, tables, charts, dashboards,
-                pages and svg icons. Each one is fully customizable, responsive and easy to use.
-            </p>
-
-            <p>
-                Budgeting is the process of creating a plan to spend your money. This plan is called a budget. Creating
-                a budget helps you to determine how much money you have coming in and going out, so you can make
-                informed decisions about how to allocate your money. A budget can help you to save money, pay off debt,
-                and achieve your financial goals.</p>
-
-            <p>There are many different ways to budget, and the right approach for you will depend on your personal
-                financial situation, your spending habits, and your financial goals. Some common methods of budgeting
-                include the 50/30/20 budget, the envelope method, and the zero-sum budget.</p>
-
-            <p>To create a budget, you will need to track your income and expenses. You can do this manually by keeping
-                track of your spending in a notebook or spreadsheet, or you can use a budgeting app or software. Once
-                you have a clear picture of your income and expenses, you can create a budget that aligns with your
-                financial goals and helps you to make the most of your money.
-            </p>
         </div>
     </div>
+    <div class="mt-5 ">
+
     </div>
 
-
-    <div class="container mt-3 ">
+    <div class="container mt-5  ">
         <div class="row justify-content-center"
             style="background-color: rgb(22,45,93)98B; color:rgb(45, 17, 17) !important">
             <div class="col-md-4">
@@ -377,12 +310,14 @@
                     </div>
                     <div class="card-body">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Budgeting is the process of creating a plan to spend and save money. It involves creating a
+                            detailed list of income and expenses, and allocating money to various categories such as
+                            housing, food, transportation, and entertainment. By creating a budget, individuals can get
+                            a better understanding of where their money is going and make changes to spending habits if
+                            necessary. It also helps to prioritize spending and saving, and make sure that expenses
+                            align with financial goals. There are different budgeting methods such as 50/30/20 rule,
+                            envelope system, zero-based budgeting, etc. The key is to find the one that works best for
+                            you and sticking to it.
                         </p>
                         <p>
                             <button>Explore Budget </button>
@@ -400,12 +335,12 @@
                     </div>
                     <div class="card-body">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Saving refers to the act of setting aside a portion of one's income for future use. This can
+                            be done in various forms, such as depositing money in a savings account at a bank,
+                            purchasing savings bonds, or investing in a retirement account. Saving allows individuals to
+                            accumulate funds for future expenses, such as buying a house, paying for college, or
+                            retirement. It also helps to build a safety net for unexpected expenses or loss of income.
+                            Building a savings habit can also help to improve financial stability and security.
                         </p>
                         <p>
                             <button>Explore More </button>
@@ -419,16 +354,15 @@
 
                 <div class="card ">
                     <div class="card-head">
-                        <img src="{{ asset('img/planing.jpg') }}" class=" card-img img-circle" alt="True Image">
+                        <img src="{{ asset('img/planing.jpg') }}" class=" card-img img-circle" alt="True Image"
+                            title="Test Me ">
                     </div>
                     <div class="card-body">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Expenses refer to the cost of goods or services that a business or individual incurs. These
+                            can include things like materials, labor, rent, marketing, and other costs associated with
+                            running a business or living one's daily life. Expenses are typically recorded in financial
+                            statements and used to calculate things like profit, loss, and net income.
                         </p>
                         <p>
                             <button>Explore More </button>

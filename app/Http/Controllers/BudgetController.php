@@ -97,9 +97,12 @@ class BudgetController extends Controller
         $budgetTwendyPer = $budget->budget_amount / 100 * 20;
         $budgetThirtyPer = $budget->budget_amount / 100 * 30;
         $budgetFirtyPer = $budget->budget_amount / 100 * 50;
-    
+
+        $budget_remain = $budget->budget_amount - $budget_expenses->where('budget_id',$id)->sum('expenses_amount');
+
+    // dd($budget_remain);
         return view('budget.show',compact('budget','budget_expenses',
-        'budgetTwendyPer','budgetThirtyPer','budgetFirtyPer'));
+        'budgetTwendyPer','budgetThirtyPer','budgetFirtyPer','budget_remain'));
     }
 
     /**

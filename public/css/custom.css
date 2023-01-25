@@ -33,10 +33,10 @@ box-shadow: 0px 4px 6px rgba(154, 170, 184, 0.2), 0px 4px 4px rgba(154, 170, 184
     background-color: #fff;
     border-radius: 20px;
 }
-.card{
+.kadi{
     transition: transform .2s; /* adds a transition effect on the transform property */
 }
-.card:hover {
+.kadi:hover {
     transform: scale(1.1); /* increases the card's size on hover */
     background-color: #f1f1f1; /* changes the background color of the card on hover */
     text-transform: lowercase;
