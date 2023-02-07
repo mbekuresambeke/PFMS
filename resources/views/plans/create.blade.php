@@ -8,28 +8,35 @@
                 <form action="">
                     <div class="form-group m-2 ">
                         <label for="Plan Title">Plan Title</label>
-                        <input type="text" name="" id="" class="form-control">
+                        <input type="text" name="plan_title" id="" class="form-control">
                     </div>
 
                     <div class="form-group m-2 ">
-                        <label for="Plan Title">Plan Title</label>
-                        <input type="text" name="" id="" class="form-control">
+                        <label for="Plan Title">ESTIMATE PRICE</label>
+                        <input type="text" name="plan_estimate_price" id="" class="form-control">
                     </div>
 
-                    <div class="form-group m-2 ">
-                        <label for="Plan Title">Plan Title</label>
-                        <input type="text" name="" id="" class="form-control">
-                    </div>
-
-                    <div class="form-group m-2 ">
-                        <label for="Plan Title">Plan Title</label>
-                        <input type="text" name="" id="" class="form-control">
-                    </div>
+                    ITEMS NAME	  			
 
 
                     <div class="form-group m-2 ">
-                        <label for="Plan Title">Plan Title</label>
-                        <input type="text" name="" id="" class="form-control">
+                        <label for="Plan Title">ESTIMATED Duration</label>
+                        <input type="text" name="duration" id="" class="form-control">
+                    </div>
+
+                    <div class="form-group m-2 ">
+                        <label for="Plan Title">Plan STATUS</label>
+                        <input type="text" name="plan_status" id="" class="form-control">
+                    </div>
+
+
+                    <div class="form-group m-2 ">
+                        <label for="Plan Title">Plan ACTION</label>
+                        <select name="action" class="form-control" id="">
+                            <option value="">Pedding</option>
+                            <option value="">onprogress</option>
+                            <option value="">completed</option>
+                        </select>
                     </div>
 
 

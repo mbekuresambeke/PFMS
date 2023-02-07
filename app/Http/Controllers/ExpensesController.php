@@ -41,6 +41,7 @@ class ExpensesController extends Controller
     {
         $user_id = auth::user()->id;
         $ExpensesCategory = ExpensesCategory::all();
+        $expenses = Expenses::with('ExpensesCategory')->where('user_id',auth::user()->id)->orderBy('created_at','desc')->paginate(15);
 
 //        dd($ExpensesCategory);
         $budgets = Budget::all()->where('user_id',$user_id);
@@ -49,7 +50,7 @@ class ExpensesController extends Controller
 
 //        dd($budget);
 
-        return view('expenses.create',compact('ExpensesCategory','budgets'));
+        return view('expenses.create',compact('ExpensesCategory','budgets','expenses'));
 
     }
 

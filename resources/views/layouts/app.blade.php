@@ -64,7 +64,7 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link text-white" href="" target="__blank"><i
+                                        <a class="nav-link text-white" href="plans" target="__blank"><i
                                                 class="fas fa-shop"></i> Saving</a>
                                     </li>
                                     <li class="nav-item">
@@ -129,8 +129,15 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+
+                                <a href="/reports" class="dropdown-item"><i class="fab fa-report"></i> Report </a>
+                                <a href="/myProfile" class="dropdown-item"><i class="fas fa-user"></i> Profile </a>
+
                                 </div>
+                                
                             </li>
+
+                            
                         @endguest
                     </ul>
                 </div>

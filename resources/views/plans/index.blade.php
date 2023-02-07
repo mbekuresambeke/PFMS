@@ -63,7 +63,36 @@
         </div>
       </div>
 
-      
+      <div class="row mt-2 p-2 ">
+        <div class="col-md-6">
+          <div class="card">
+            <h2>Onprogress Task</h2>
+            <ul>
+              <li>Iphone 14 </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card">
+            <h2>Onprogress Task</h2>
+            <div class="card-body">
+              <ul class="list-group">
+                <li>Iphone 14 </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card">
+            <h2>Onprogress Task</h2>
+            <ul>
+              <li>Iphone 14 </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 </div>
 
 @endsection

@@ -18,9 +18,14 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/change-password', [App\Http\Controllers\HomeController::class, 'changePassword'])->name('change-password');
+Route::post('/change-password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('update-password');
 Route::get('/blog', [App\Http\Controllers\BlogController::class, 'blog'])->name('blog');
+Route::get('/reports',[App\Http\Controllers\ReportController::class,'index'])->name('report');
+Route::get('/myProfile',[App\Http\Controllers\ProfileController::class,'profile'])->name('myProfile');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::resource('/expensesCategory/', App\Http\Controllers\ExpensesCategoryController::class);

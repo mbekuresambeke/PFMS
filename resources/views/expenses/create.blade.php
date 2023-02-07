@@ -38,9 +38,14 @@
                                 <label>Budgeting Expenses <span style="color:red;">*</span></label>
                                 <select name="expenses_budget" id="" class="form-control">
                                     <option value="#">Choose Budget </option>
+                                   
                                     @foreach ($budgets as $budget)
+                                    @if ($budget  <  $expenses)
+                                    
+                                    @else
                                         <option value="{{ $budget->id }}">Tsh
                                             {{ number_format($budget->budget_amount, 2) }}</option>
+                                    @endif
                                     @endforeach
                                 </select>
                             </div>

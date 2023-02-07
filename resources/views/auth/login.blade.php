@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container d-flex flex-column ingia box  ">
+    <div class="container d-flex flex-column ingia box  " style="background:#8d448b !important">
         <div class="row vh-100 bg-white ">
-            <div class="col-sm-12 col-md-8 col-lg-9  mx-auto d-table h-100 ">
+            <div class="col-sm-12 col-md-8 col-lg-9  mx-auto d-table h-90 ">
                 <div class="d-table-cell align-middle">
                     <div class="bg-primary text-white  p-2 m-2 px-2 py-3 text-center mt-4">
                         <h1 class="h2">Welcome back, to Financial Management </h1>
@@ -76,4 +76,60 @@
             </div>
         </div>
     </div>
+{{-- 
+    <section style="
+        padding: 7em 0">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section">Login #08</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="p-4 p-md-5"
+                        style="    position: relative;
+        background: #fff;
+        border-radius: 10px;">
+                        <div class="d-flex align-items-center justify-content-center"style="width: 80px;
+                    height: 80px;
+                    background: #8d448b;
+                    border-radius: 50%;
+                    font-size: 30px;
+                    margin: 0 auto;
+                    margin-bottom: 10px;">
+                            <span class="fa fa-user-o"></span>
+                        </div>
+                        <h3 class="text-center mb-4">Have an account?</h3>
+                        <form action="#" class="login-form" style="display: block;
+                        margin-top: 0em;">
+                            <div class="form-group">
+                                <input type="text" class="form-control  "
+                                    style="border-top-left-radius: 0.25rem !important;" placeholder="Username" required>
+                            </div>
+                            <div class="form-group d-flex">
+                                <input type="password" class="form-control  "
+                                    style="    border-bottom-left-radius: 0.25rem !important;" placeholder="Password"
+                                    required>
+                            </div>
+                            <div class="form-group d-md-flex">
+                                <div class="w-50">
+                                    <label class="checkbox-wrap checkbox-primary">Remember Me
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="w-50 text-md-right">
+                                    <a href="#">Forgot Password</a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary rounded submit p-3 px-5">Get Started</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> --}}
 @endsection
