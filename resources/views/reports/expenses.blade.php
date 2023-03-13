@@ -14,7 +14,7 @@
 			<th>November</th>
 			<th>December</th>
 			<th>January</th>
-			
+
 		</tr>
 		<tr>
 			<td class="text-bold"><strong>Total</strong></td>
@@ -29,21 +29,21 @@
 		<table class="table">
 			<h3>Expenses in Three Months</h3>
 			<tr>
-				<td><strong>Total</strong></td>
-				<th>November</th>
-				<th>December</th>
-				<th>January</th>
-				
+				<td><strong>Expenses Three Months</strong></td>
+				<th>Expenses Monthly</th>
+				<th>Expenses Yearly</th>
+				{{-- <th>Total</th> --}}
 			</tr>
-			<tr>
-				<td>$200,00</td>
-				<td>$200,00</td>
-				<td>$200,00</td>
-			</tr>
+            <tr>
+
+            {{-- <td>{{number_format($data,2)}}</td> --}}
+            <td>{{number_format($ThreeMonthsExpenses,2)}}</td>
+            <td>{{number_format($YearlyData,2)}}</td>
+            </tr>
+
 		</table>
 
 		{{-- @foreach ($userArr as $item) --}}
-			{{$item->expenses_amounts}}
 		{{-- @endforeach --}}
 		</div>
 </div>

@@ -9,6 +9,7 @@
     <title>{{ config('app.name', 'PFMS') }}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('fontawesome/js/all.min.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,6 +58,22 @@
                                     <li class="nav-item active">
                                         <a class="nav-link text-white active ms-0" href="/home" target="__blank"><i
                                                 class="fas fa-user"></i> Profile</a>
+                                    </li>
+
+                                    <li class="nav-item active">
+                                        <a class="nav-link text-white active ms-0" href="/users" target="__blank"><i
+                                                class="fas fa-user"></i>Admin Panel</a>
+                                    </li>
+
+
+                                    <li class="nav-item active">
+                                        <a class="nav-link text-white active ms-0" href="/users" target="__blank"><i
+                                                class="fas fa-user"></i>Debt</a>
+                                    </li>
+
+                                    <li class="nav-item active">
+                                        <a class="nav-link text-white active ms-0" href="/plans" target="__blank"><i
+                                                class="fas fa-dollar"></i>Plans</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link text-white" href="/budget"><i
@@ -134,10 +151,10 @@
                                 <a href="/myProfile" class="dropdown-item"><i class="fas fa-user"></i> Profile </a>
 
                                 </div>
-                                
+
                             </li>
 
-                            
+
                         @endguest
                     </ul>
                 </div>
@@ -150,6 +167,7 @@
     </div>
 
     @include('footer.footer')
+
 </body>
 
 </html>

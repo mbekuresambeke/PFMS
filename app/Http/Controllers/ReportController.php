@@ -11,7 +11,7 @@ use Carbon\Carbon;
 class ReportController extends Controller
 {
     //
-    
+
 
     public function index(){
         // $january = Expenses::where('create_at',date('Y-m'));
@@ -33,40 +33,38 @@ class ReportController extends Controller
         //                     ->get();
         // }
 
-        $data = Expenses::select('expenses_amount', 'created_at')
+        $YearlyData = Expenses::select('expenses_amount', 'created_at')
         ->get()
-        ->groupBy(function ($date) {
-            return Carbon::parse($date->created_at)->format('m');
-        });
+        ->sum('expenses_amount');
 
-    $usermcount = [];
-    $userArr = [];
+    // $usermcount = [];
+    // $userArr = [];
 
-    foreach ($data as $key => $value) {
-        $usermcount[(int)$key] = count($value);
-    }
+    // foreach ($data as $key => $value) {
+    //     $usermcount[(int)$key] = count($value);
+    // }
 
-    $month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    // $month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    for ($i = 1; $i <= 12; $i++) {
-        if (!empty($usermcount[$i])) {
-            $userArr[$i]['count'] = $usermcount[$i];
-        } else {
-            $userArr[$i]['count'] = 0;
-        }
-        $userArr[$i]['month'] = $month[$i - 1];
-    }
+    // for ($i = 1; $i <= 12; $i++) {
+    //     if (!empty($usermcount[$i])) {
+    //         $userArr[$i]['count'] = $usermcount[$i];
+    //     } else {
+    //         $userArr[$i]['count'] = 0;
+    //     }
+    //     $userArr[$i]['month'] = $month[$i - 1];
+    // }
 
 // dd($data);
     // return response()->json(array_values($userArr));
 
 
-        // Yearly Records 
+        // Yearly Records
     $YearlyData = DB::table('expenses')
-                ->whereBetween('created_at', [Carbon::now()->startOfYear(), Carbon::now()->endOfYear()])
-                ->get();
+                ->where('created_at', date('Y'))
+                ->sum('expenses_amount');
         // dd($YearlyData);
 
-        return view('reports.expenses','userArr')->response()->json(array_values($userArr));
+        return view('reports.expenses',compact('ThreeMonthsExpenses','YearlyData'));
     }
 }

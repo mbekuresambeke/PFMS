@@ -145,14 +145,15 @@
             </div> <!-- end col -->
         </div>
         <div class="row justify-content-center text-white mt-3  ">
-            <table class="table table-bordered">
+            <table id="myTable" class="table table-bordered">
                 <tr>
                     <th>S/N</th>
                     <th>Budget Title</th>
                     <th>Budget Amount</th>
                     <th>Budget Status</th>
+                    <th>Budget RemainAmount</th>
                     <th>Budget Posted</th>
-                    <th>Action</th>
+                    <th colspan="3">Action</th>
                 </tr>
                 @foreach ($budgets as $budget)
                     <tr>
@@ -160,8 +161,9 @@
                         <td>{{ $budget->budget_title }}</td>
                         <td><small><strong>Tsh {{ number_format($budget->budget_amount, 2) }}</strong></small></td>
                         <td> <code>{{ $budget->budget_status == 1 ? 'Active' : 0 == 'inactive ' }}</code></td>
+                        <td>hello</td>
                         <td>{{ $budget->created_at->diffForHumans() }}</td>
-                        <td>
+                        <td >
                             <a href="budget/{{$budget->id}}" class="text-primary btn border">View <i class="fas fa-eye"></i></a>
                             <a href="budget/{{$budget->id}}/edit" class="text-warning btn border">Edit <i class="fas fa-edit"></i></a>
                             <a href="" class="text-danger  btn border">Trash <i class="fas fa-trash"></i></a>
@@ -174,4 +176,17 @@
             </div>
         </div>
     </div>
+    <script>
+        $(function () {
+            var table = $('.data-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('budget.index') }}", 
+                columns: [
+                    {data: 'name', name: 'name'},
+                    {data: 'email', name: 'email'},
+                    {data: 'created_at', name: 'created_at'}
+                ]
+            });
+        });
 @endsection

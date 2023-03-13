@@ -14,12 +14,12 @@ class BudgetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
-    
+
+
     public function index()
-    { 
+    {
         $date = \Carbon\Carbon::now();
-        $lastMonthText =  $date->subMonth()->format('F'); 
+        $lastMonthText =  $date->subMonth()->format('F');
         $budgetTotalSum = Budget::sum('budget_amount');
         $budgets = Budget::orderBy('created_at','DESC')->paginate(10);
         $BudgetSaving  = $budgetTotalSum / 100 * 20;
@@ -27,9 +27,8 @@ class BudgetController extends Controller
         $BudgetNeeds  = $budgetTotalSum / 100 * 50;
         // dd($BudgetTenPercent);
 
-        //Amount Used Fetch 
-        
-        //End Of Used Fetch 
+        //Amount Used Fetch
+        //End Of Used Fetch
 
         $ThisMonthBudget = Budget::whereMonth('created_at', '=', date('m'))->sum('budget_amount');
         $Totalbudgets = Budget::all()->sum('budget_amount');
@@ -89,19 +88,26 @@ class BudgetController extends Controller
      */
     public function show($id)
     {
-     
+
         // $user_id =  auth::user()->id;
-        
+
         $budget = Budget::find($id);
+        // $total_budget = Budget::sum('budget_amount');
         $budget_expenses =Expenses::where('budget_id',$id)->get();
         $budgetTwendyPer = $budget->budget_amount / 100 * 20;
         $budgetThirtyPer = $budget->budget_amount / 100 * 30;
         $budgetFirtyPer = $budget->budget_amount / 100 * 50;
 
-        $budget_remain = $budget->budget_amount - $budget_expenses->where('budget_id',$id)->sum('expenses_amount');
+        // dd($budgetUsedPercentage);
 
-    // dd($budget_remain);
-        return view('budget.show',compact('budget','budget_expenses',
+
+        $budget_remain = $budget->budget_amount - $budget_expenses->where('budget_id',$id)->sum('expenses_amount');
+        // $budget_remain = $budget->budget_amount - $budget_expenses->where('budget_id',$id);
+          $budgetUsedPercentage = ( $budget_expenses / $budget) * 100;
+
+        // DataTables::of($data)->make(true)
+    dd($budgetUsedPercentage);
+        return view ('budget.show',compact('budget','budget_expenses',
         'budgetTwendyPer','budgetThirtyPer','budgetFirtyPer','budget_remain'));
     }
 

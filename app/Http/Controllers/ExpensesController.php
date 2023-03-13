@@ -19,6 +19,7 @@ class ExpensesController extends Controller
      */
     public function index()
     {
+
         $TotalExpenses =  Expenses::with('expenses_category_name')->sum('expenses_amount');
         $DailyExpenses =  Expenses::whereDate('created_at', Carbon::today())->sum('expenses_amount');
         $TotalBudgets = budget::sum('budget_amount');
@@ -39,16 +40,43 @@ class ExpensesController extends Controller
      */
     public function create()
     {
-        $user_id = auth::user()->id;
+
+        // $user_id = auth::user()->id;
         $ExpensesCategory = ExpensesCategory::all();
         $expenses = Expenses::with('ExpensesCategory')->where('user_id',auth::user()->id)->orderBy('created_at','desc')->paginate(15);
 
 //        dd($ExpensesCategory);
-        $budgets = Budget::all()->where('user_id',$user_id);
+        // $budgets = Budget::all();
+        // $budgets = Budget::with('expenses')->get();
+// dd($budgets);
+        //filter Laravel result using filter function
+        // $filterBudgets =$budgets->filter(function($budget)
+        // {
+        // $totalExpenses = $budgets->expenses->sum('expenses_amount');
+        // $totalBudget = $budgets->budget_amount;
+        // });
+        // $BudgetToUse =  $totalExpenses < ($totalBudget * 0.8);
+
+        // dd($BudgetToUse);
 
 //        dd($budgets);
 
 //        dd($budget);
+                        $budgets = Budget::with('expenses')->get();
+
+                        // Filter Laravel result using filter function
+                        $filteredBudgets = $budgets->filter(function ($budget) {
+                            $totalExpenses = $budget->expenses->sum('expenses_amount');
+                            $totalBudget = $budget->budget_amount;
+
+                            return $totalExpenses < ($totalBudget * 0.9); // Limit budget to 90%
+                        });
+
+                        // Use the filtered budgets as needed
+                        foreach ($filteredBudgets as $budget) {
+                            // Do something with the budget
+                            $budget->budget_amount;
+                        }
 
         return view('expenses.create',compact('ExpensesCategory','budgets','expenses'));
 
@@ -94,6 +122,7 @@ class ExpensesController extends Controller
      */
     public function show($id)
     {
+
         $Expense = Expenses::findorFail($id);
        return view('expenses.show',compact('Expense'));
     }

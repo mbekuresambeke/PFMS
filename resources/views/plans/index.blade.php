@@ -8,7 +8,7 @@
             <div class="card-body d-flex align-items-center justify-content-between">
               <div>
                 <h3 class="fw-bolder mb-75">21,459</h3>
-                <span>Total Users</span>
+                <span>Total Plans</span>
               </div>
               <div class="avatar bg-light-primary p-50">
                 <span class="avatar-content">
@@ -22,8 +22,10 @@
           <div class="card">
             <div class="card-body d-flex align-items-center justify-content-between">
               <div>
-                <h3 class="fw-bolder mb-75">4,567</h3>
-                <span>Paid Users</span>
+                <h3 class="fw-bolder mb-75">
+                        {{ $onProgressTasksCount }}
+                </h3>
+                <span>OnProgress Plans</span>
               </div>
               <div class="avatar bg-light-danger p-50">
                 <span class="avatar-content">
@@ -37,8 +39,8 @@
           <div class="card">
             <div class="card-body d-flex align-items-center justify-content-between">
               <div>
-                <h3 class="fw-bolder mb-75">19,860</h3>
-                <span>Active Users</span>
+                <h3 class="fw-bolder mb-75">{{ $PendingTasksCount }}</h3>
+                <span>Pending Plans</span>
               </div>
               <div class="avatar bg-light-success p-50">
                 <span class="avatar-content">
@@ -52,8 +54,8 @@
           <div class="card">
             <div class="card-body d-flex align-items-center justify-content-between">
               <div>
-                <h3 class="fw-bolder mb-75">237</h3>
-                <span>Pending Users</span>
+                <h3 class="fw-bolder mb-75">{{ $CompletedTasksCount }}</h3>
+                <span>Completed Plans </span>
               </div>
               <div class="avatar bg-light-warning p-50">
                 <i class="fas fa-users"></i>
@@ -64,32 +66,97 @@
       </div>
 
       <div class="row mt-2 p-2 ">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="card">
-            <h2>Onprogress Task</h2>
-            <ul>
-              <li>Iphone 14 </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-md-3">
-          <div class="card">
-            <h2>Onprogress Task</h2>
-            <div class="card-body">
-              <ul class="list-group">
-                <li>Iphone 14 </li>
-              </ul>
+            <h2 class="upper-case text-danger">Onprogress Task</h2>
+            <table class="table table-striped  ">
+              <tr>
+                <th>PLAN NAME</th>
+                <th>PLAN PRICE</th>
+                <th>PLAN DURATION</th>
+                <th>PostedAt</th>
+                <th>PLAN STATUS</th>
+              </tr>
+              @foreach ($onProgressTasks as $onProgressTask)
+              <tr>
+                <td>{{ $onProgressTask->plan_title }}</td>
+                <td>{{ $onProgressTask->plan_estimate_price }}</td>
+                <td>{{ $onProgressTask->duration }}</td>
+                <td>{{ $onProgressTask->created_at->diffForHumans()}}</td>
+                <td class="text-success">{{ $onProgressTask->action }}</td>
+              </tr>
+              @endforeach
+            </table>
+            <div class="alert alert-info ">
+                <p>
+                    Hello Amount for This Cart is TSH: {{number_format ($onProgressTasks->sum('plan_estimate_price'),2) }}
+                </p>
             </div>
           </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="card">
-            <h2>Onprogress Task</h2>
-            <ul>
-              <li>Iphone 14 </li>
-            </ul>
+            <h2>Pending Task</h2>
+            <div class="card-body">
+              <table class="table table-borderless ">
+                <tr>
+                    <th>PLAN NAME</th>
+                    <th>PLAN PRICE</th>
+                    {{-- <th>PLAN DURATION</th> --}}
+                    <th>PostedAt</th>
+                    <th>STATUS</th>
+                  </tr>
+
+                @foreach ($PendingTasks as $PendingTask)
+                <tr>
+                <td>{{ $PendingTask->plan_title }}</td>
+                <td>{{ $PendingTask->plan_estimate_price }}</td>
+                {{-- <td>{{ $PendingTask->duration }}</td> --}}
+                <td class="text-info ">{{ $PendingTask->action }}</td>
+
+                <td>{{ $PendingTask->created_at->diffForHumans() }}</td>
+                </tr>
+                @endforeach
+              </table>
+              <div class="alert alert-success">
+                <p>
+                    Hello Amount for This Cart is TSH: {{ number_format($PendingTasks->sum('plan_estimate_price'),2)}}
+                </p>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card">
+            <h2>Completed Task</h2>
+            <table class="table table-striped ">
+                <tr>
+                <th>PLAN NAME</th>
+                <th>PLAN PRICE</th>
+                {{-- <th>PLAN DURATION</th> --}}
+                <th>PostedAt</th>
+                <th>STATUS</th>
+                </tr>
+                @foreach($CompletedTasks as $CompletedTask)
+                 <tr>
+                    <td>{{ $CompletedTask->plan_title }}</td>
+                    <td>{{ $CompletedTask->plan_estimate_price }}</td>
+                <td class="text-warning">{{ $CompletedTask->action }}</td>
+
+                    {{-- <td>{{ $CompletedTask->duration }}</td> --}}
+                    <td>{{ $CompletedTask->created_at }}</td>
+                 </tr>
+            @endforeach
+
+
+        </table>
+        <div class="alert alert-secondary">
+            <p>
+                Hello Amount for This Cart is TSH: {{number_format($CompletedTasks->sum('plan_estimate_price'),2) }}
+            </p>
+        </div>
           </div>
         </div>
       </div>
