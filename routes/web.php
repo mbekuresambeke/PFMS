@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
+| Here is where you can register web routes for your application. These| routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
 */
@@ -24,6 +23,7 @@ Route::post('/change-password', [App\Http\Controllers\HomeController::class, 'up
 Route::get('/blog', [App\Http\Controllers\BlogController::class, 'blog'])->name('blog');
 Route::get('/reports',[App\Http\Controllers\ReportController::class,'index'])->name('report');
 Route::get('/myProfile',[App\Http\Controllers\ProfileController::class,'profile'])->name('myProfile');
+Route::resource('/plans', App\Http\Controllers\PlanController::class);
 
 
 
@@ -31,7 +31,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('/expensesCategory/', App\Http\Controllers\ExpensesCategoryController::class);
     Route::resource('/budget', App\Http\Controllers\BudgetController::class);
     Route::resource('/expenses', App\Http\Controllers\ExpensesController::class);
-    Route::resource('/plans', App\Http\Controllers\PlanController::class);
 
 });
 

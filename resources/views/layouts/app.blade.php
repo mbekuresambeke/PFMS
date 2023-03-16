@@ -9,6 +9,7 @@
     <title>{{ config('app.name', 'PFMS') }}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('fontawesome/js/all.min.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -150,6 +151,7 @@
     </div>
 
     @include('footer.footer')
+
 </body>
 
 </html>
