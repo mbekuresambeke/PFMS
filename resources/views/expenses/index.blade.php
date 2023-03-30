@@ -17,7 +17,7 @@
                             <hr>
                            <p>Sorry you dont have enough bandoo <i class="fas fa-box"></i></p>
                             {{-- @endif --}}
-                
+
                             <i class="fas fa-calendar m-right"></i>
                         </div>
                         </div>
@@ -31,7 +31,7 @@
                             <p>Tsh {{number_format($WeeklyExpenses,2)}}</p>
                             <a href="/">View Now</a>
                         </div>
-                       
+
                     </div>
                 </div>
 
@@ -55,6 +55,23 @@
                     </div>
                 </div>
             </div>
+        </section>
+        <hr>
+
+        <section>
+<div>
+    <div class="row">
+        @foreach ($ExpensesCategory as $expense)
+        <div class="col-md-2 m-2 p-2 border shadow-lg"><h4>
+            {{-- <p>Expense Name: {{ $expense->expenses_title }}</p> --}}
+            <p>Expense Amount: {{ $expense->expenses_amount }}</p>
+            <p>Expense Category: {{ $expense->ExpensesCategory->expenses_category_name }}</p>
+        </div>
+        @endforeach
+
+
+    </div>
+</div>
         </section>
     </div>
 

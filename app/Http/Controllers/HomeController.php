@@ -38,6 +38,9 @@ class HomeController extends Controller
         return view('home',compact('budgets','budgets_count','expenses','expenses_count'));
     }
 
+    public function test(){
+        return view('test');
+    }
     public function changePassword()
 {
    return view('Account.change-password');

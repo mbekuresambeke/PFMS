@@ -28,9 +28,10 @@ class ExpensesController extends Controller
         $WeeklyExpenses = Expenses::where( 'created_at', '>', Carbon::now()->subDays(7))->sum('expenses_amount');
         $MonthlyExpenses = Expenses::whereMonth('created_at',date('m'))->sum('expenses_amount');
         $percentage_calculator  =  $TotalBudgets - $TotalExpenses / 100;
-
+        $ExpensesCategory =  Expenses::with('ExpensesCategory')->get();
+        // dd($ExpensesCategory);
         // dd($percentage_calculator);
-        return view('expenses.index',compact('TotalExpenses','DailyExpenses','WeeklyExpenses','MonthlyExpenses','expenses','percentage_calculator'));
+        return view('expenses.index',compact('TotalExpenses','DailyExpenses','WeeklyExpenses','MonthlyExpenses','expenses','percentage_calculator','ExpensesCategory'));
     }
 
     /**

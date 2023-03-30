@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/test', [App\Http\Controllers\HomeController::class, 'test'])->name('test');
 Route::get('/change-password', [App\Http\Controllers\HomeController::class, 'changePassword'])->name('change-password');
 Route::post('/change-password', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('update-password');
 Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
