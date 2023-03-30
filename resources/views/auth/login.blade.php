@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<<<<<<< HEAD
     {{-- <div class="container-fluid">
         <div class="row min-vh-100 flex-center g-0">
             <div class="col-lg-8 col-xxl-5 py-3 position-relative"><img class="bg-auth-circle-shape"
@@ -71,6 +72,8 @@
             </div>
         </div>
     </div> --}}
+=======
+>>>>>>> 1bf4b412f874792ab5fb2009203d1d6e9a56c5b0
     <div class="container d-flex flex-column ingia box      " style="background:#8d448b !important">
         <div class="row vh-100 bg-white ">
             <div class="col-sm-12 col-md-8 col-lg-9  mx-auto d-table h-90 ">
