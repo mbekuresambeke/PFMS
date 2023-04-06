@@ -27,8 +27,13 @@ class BudgetController extends Controller
         $BudgetNeeds  = $budgetTotalSum / 100 * 50;
         // dd($BudgetTenPercent);
 
+<<<<<<< HEAD
         //Amount Used Fetch
         //End Of Used Fetch
+=======
+        //Amount Used Fetch 
+        //End Of Used Fetch 
+>>>>>>> 1bf4b412f874792ab5fb2009203d1d6e9a56c5b0
 
         $ThisMonthBudget = Budget::whereMonth('created_at', '=', date('m'))->sum('budget_amount');
         $Totalbudgets = Budget::all()->sum('budget_amount');
@@ -92,12 +97,19 @@ class BudgetController extends Controller
         // $user_id =  auth::user()->id;
 
         $budget = Budget::find($id);
+<<<<<<< HEAD
         // $total_budget = Budget::sum('budget_amount');
+=======
+        $total_budget = Budget::sum('budget_amount')p;
+>>>>>>> 1bf4b412f874792ab5fb2009203d1d6e9a56c5b0
         $budget_expenses =Expenses::where('budget_id',$id)->get();
         $budgetTwendyPer = $budget->budget_amount / 100 * 20;
         $budgetThirtyPer = $budget->budget_amount / 100 * 30;
         $budgetFirtyPer = $budget->budget_amount / 100 * 50;
+        $budgetUsedPercentage = ($budget_expenses / $budget) * 100;
+        dd($budgetUsedPercentage);
 
+<<<<<<< HEAD
         // dd($budgetUsedPercentage);
 
 
@@ -109,6 +121,13 @@ class BudgetController extends Controller
     dd($budgetUsedPercentage);
         return view ('budget.show',compact('budget','budget_expenses',
         'budgetTwendyPer','budgetThirtyPer','budgetFirtyPer','budget_remain'));
+=======
+        $budget_remain = $budget->budget_amount - $budget_expenses->where('budget_id',$id)->sum('expenses_amount');
+        // DataTables::of($data)->make(true)
+    // dd($budget_remain);
+        return view ('budget.show',compact('budget','budget_expenses',
+        'budgetTwendyPer','budgetThirtyPer','budgetFirtyPer','budget_remain','budgetUsedPercentage'));
+>>>>>>> 1bf4b412f874792ab5fb2009203d1d6e9a56c5b0
     }
 
     /**
