@@ -31,8 +31,8 @@ class BudgetController extends Controller
         //Amount Used Fetch
         //End Of Used Fetch
 =======
-        //Amount Used Fetch 
-        //End Of Used Fetch 
+        //Amount Used Fetch
+        //End Of Used Fetch
 >>>>>>> 1bf4b412f874792ab5fb2009203d1d6e9a56c5b0
 
         $ThisMonthBudget = Budget::whereMonth('created_at', '=', date('m'))->sum('budget_amount');
