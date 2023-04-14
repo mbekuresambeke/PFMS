@@ -45,25 +45,7 @@ class ExpensesController extends Controller
         // $user_id = auth::user()->id;
         $ExpensesCategory = ExpensesCategory::all();
         $expenses = Expenses::with('ExpensesCategory')->where('user_id',auth::user()->id)->orderBy('created_at','desc')->paginate(15);
-
-//        dd($ExpensesCategory);
-        // $budgets = Budget::all();
-        // $budgets = Budget::with('expenses')->get();
-// dd($budgets);
-        //filter Laravel result using filter function
-        // $filterBudgets =$budgets->filter(function($budget)
-        // {
-        // $totalExpenses = $budgets->expenses->sum('expenses_amount');
-        // $totalBudget = $budgets->budget_amount;
-        // });
-        // $BudgetToUse =  $totalExpenses < ($totalBudget * 0.8);
-
-        // dd($BudgetToUse);
-
-//        dd($budgets);
-
-//        dd($budget);
-                        $budgets = Budget::with('expenses')->get();
+        $budgets = Budget::with('expenses')->get();
 
                         // Filter Laravel result using filter function
                         $filteredBudgets = $budgets->filter(function ($budget) {
