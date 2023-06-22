@@ -7,13 +7,13 @@
             <div class="col-lg-3">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Hello {{Auth::user()->name}}</h2>
+                        <h2>Hello {{ auth()->user()->name }}</h2>
                     </div>
                     <div class="card-body">
                         <p>
                             Your Currently Budget is
                         </p>
-                        <h2>{{number_format($Totalbudgets,2)}}</h2>
+                        <h2>{{ number_format($Totalbudgets,2) }}</h2>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                     <div class="card p-2 m-2 alert alert-success">
                         <h4>Saving Amount</h4>
                         <p>
-                            Tsh {{number_format($BudgetSaving,2)}}
+                            Tsh {{ number_format($BudgetSaving,2) }}
                         </p>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     <div class="card p-2 m-2 alert alert-warning">
                         <h4>Needs Budget</h4>
                         <p>
-                            Tsh {{number_format($BudgetWants,2)}}
+                            Tsh {{ number_format($BudgetWants,2) }}
                         </p>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                     <div class="card p-2 m-2 alert alert-primary">
                         <h4>Wants Amount</h4>
                         <p>
-                            Tsh {{number_format($BudgetNeeds,2)}}
+                            Tsh {{ number_format($BudgetNeeds,2) }}
                         </p>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                             <h6>Budget of {{ $lastMonthText }}</h6>
                         </div>
                         <div class="card-body">
-                            <h2>TSH: {{number_format($ThisMonthBudget,2)}}</h2>
+                            <h2>TSH: {{ number_format($ThisMonthBudget,2) }}</h2>
                         </div>
                     </div>
                 </div>
@@ -157,15 +157,15 @@
                 </tr>
                 @foreach ($budgets as $budget)
                     <tr>
-                        <td>{{$loop->index}}</td>
+                        <td>{{ $loop->index }}</td>
                         <td>{{ $budget->budget_title }}</td>
                         <td><small><strong>Tsh {{ number_format($budget->budget_amount, 2) }}</strong></small></td>
                         <td> <code>{{ $budget->budget_status == 1 ? 'Active' : 0 == 'inactive ' }}</code></td>
                         <td>hello</td>
                         <td>{{ $budget->created_at->diffForHumans() }}</td>
                         <td >
-                            <a href="budget/{{$budget->id}}" class="text-primary btn border">View <i class="fas fa-eye"></i></a>
-                            <a href="budget/{{$budget->id}}/edit" class="text-warning btn border">Edit <i class="fas fa-edit"></i></a>
+                            <a href="budget/{{ $budget->id }}" class="text-primary btn border">View <i class="fas fa-eye"></i></a>
+                            <a href="budget/{{ $budget->id }}/edit" class="text-warning btn border">Edit <i class="fas fa-edit"></i></a>
                             <a href="" class="text-danger  btn border">Trash <i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
@@ -181,7 +181,7 @@
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('budget.index') }}", 
+                ajax: "{{ route('budget.index') }}",
                 columns: [
                     {data: 'name', name: 'name'},
                     {data: 'email', name: 'email'},

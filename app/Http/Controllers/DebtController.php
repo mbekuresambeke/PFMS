@@ -12,7 +12,7 @@ class DebtController extends Controller
 
         $debts = Debt::all();
 
-        return view('debts.index',compact('debts'));
+        return view('debts.index', compact('debts'));
     }
 
     public function create()
@@ -23,7 +23,7 @@ class DebtController extends Controller
     public function store(Request $request)
     {
         // dd("Welcome Mr").auth::user->name;
-        $debt = new Debt();
+        $debt = new Debt;
 
         $debt->debtor_name = $request->input('debtor_name');
         $debt->amount = $request->input('amount');

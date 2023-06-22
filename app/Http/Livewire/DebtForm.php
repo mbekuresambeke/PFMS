@@ -3,11 +3,11 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+
 // use App\Models\Contact;
 
 class DebtForm extends Component
 {
-
     public $name;
     public $email;
     public $phone;
@@ -15,10 +15,10 @@ class DebtForm extends Component
     public function submit()
     {
         Contact::create([
-            'rentAmount' =>$this->rentAmount,
-            'utilityAmount' =>$this->utilityAmount,
-            'creditCardAmount' =>$this->creditCardAmount,
-            'loanAmount' =>$this->loanAmount,
+            'rentAmount' => $this->rentAmount,
+            'utilityAmount' => $this->utilityAmount,
+            'creditCardAmount' => $this->creditCardAmount,
+            'loanAmount' => $this->loanAmount,
         ]);
 
         $this->reset();
@@ -26,7 +26,6 @@ class DebtForm extends Component
 
     public function render()
     {
-
 
         return view('livewire.debt-form');
     }

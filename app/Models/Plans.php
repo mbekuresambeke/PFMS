@@ -15,6 +15,6 @@ class Plans extends Model
         'category',
         'duration',
         'plan_status',
-        'action'
+        'action',
     ];
 }

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class BlogController extends Controller
 {
     //
-    public function blog(){
+    public function blog()
+    {
         return view('budget_category.create');
     }
 }

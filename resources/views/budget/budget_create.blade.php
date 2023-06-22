@@ -38,7 +38,7 @@
             <div class="col-xl-4">
                 <!-- Profile picture card-->
                 <div class="card mb-4 mb-xl-0">
-                    <div class="card-header">Hello <code>{{ Auth::user()->name }} </code>Create New Budget</div>
+                    <div class="card-header">Hello <code>{{ auth()->user()->name }} </code>Create New Budget</div>
                     <div class="card-body text-center">
                         <!-- Profile picture image-->
                         <img class="img-account-profile img-fluid  rounded-circle " src="{{ asset('cartoon.png') }}"
@@ -56,7 +56,7 @@
                     <div class="card-header">Budget Create <span class="text-right "> <strong>Today's Date
                             </strong>{{ date('d--M--Y') }}</span></div>
                     <div class="card-body">
-                        
+
                         <form method="POST" action="/budget">
                             <!-- Form Group (username)-->
                             @csrf

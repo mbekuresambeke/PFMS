@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <h2>Budget  Amount </h2>
                         <p class="text-strong">
-                           <button class="btn btn-primary btn-block btn-lg"> Tsh: {{number_format($budget->budget_amount,2)}}</button>
+                           <button class="btn btn-primary btn-block btn-lg"> Tsh: {{ number_format($budget->budget_amount,2) }}</button>
                         </p>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                 </h2>
                 <div class="d-flex">
                     <div>
-                        Tsh: {{number_format($budgetTwendyPer,2)}}
+                        Tsh: {{ number_format($budgetTwendyPer,2) }}
                     </div>
                     <div class="m-3 ">
                         <i class="fab fa-tiktok"></i>
@@ -38,8 +38,8 @@
                 </h2>
                 <div class="d-flex">
                     <div>
-                        Tsh: {{number_format($budgetThirtyPer,2)}}
-                        
+                        Tsh: {{ number_format($budgetThirtyPer,2) }}
+
                     </div>
                     <div class="m-3 ">
                         <i class="fab fa-tiktok"></i>
@@ -55,7 +55,7 @@
                 </h2>
                 <div class="d-flex">
                     <div>
-                        Tsh: {{number_format($budgetFirtyPer,2)}}
+                        Tsh: {{ number_format($budgetFirtyPer,2) }}
                     </div>
                     <div class="m-3 ">
                         <i class="fab fa-tiktok"></i>
@@ -76,28 +76,28 @@
                     </tr>
                     @foreach ($budget_expenses as $expenses )
                         <tr>
-                            <td>{{$loop->index}}</td>
-                            <td>{{$expenses->expenses_title}}</td>
-                            <td>{{number_format($expenses->expenses_amount,2)}}</td>
-                            <td>{{$expenses->expenses_description}}</td>
+                            <td>{{ $loop->index }}</td>
+                            <td>{{ $expenses->expenses_title }}</td>
+                            <td>{{ number_format($expenses->expenses_amount,2) }}</td>
+                            <td>{{ $expenses->expenses_description }}</td>
                         </tr>
                     @endforeach
-                    
+
                 </table>
                 <div class="d-flex justify-content-between py-2 px-4 m-2   ">
-        
+
                     <div class="bg-secondary text-white ">
-                    <p> O'ops <i class ="fa-solid fa-circle-exclamation"></i> <br> 
-                        Your EXPENSES AMOUNT IS <br> TSH {{number_format($budget_expenses->sum('expenses_amount'),2)}}</p>  
+                    <p> O'ops <i class ="fa-solid fa-circle-exclamation"></i> <br>
+                        Your EXPENSES AMOUNT IS <br> TSH {{ number_format($budget_expenses->sum('expenses_amount'),2) }}</p>
                     </div>
 
                     <div class="bg-primary text-white  ">
                         <h6>Hello </h6>
                         <p>Budget Amount Remain  <br>
-                            TSH {{number_format($budget_remain,2)}}
-                        </p>  
-                       
-                    </div> 
+                            TSH {{ number_format($budget_remain,2) }}
+                        </p>
+
+                    </div>
 
                 </div>
                 </div>

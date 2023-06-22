@@ -13,9 +13,9 @@
     <link rel="shortcut icon" href="favicon.ico">
 
     <!-- FontAwesome JS-->
-    <script defer src="{{asset('assets/plugins/fontawesome/js/all.min.js')}}"></script>
+    <script defer src="{{ asset('assets/plugins/fontawesome/js/all.min.js') }}"></script>
     <!----CSS ---->
-    <link id="theme-style" rel="stylesheet" href="{{asset('assets/css/portal.css')}}">
+    <link id="theme-style" rel="stylesheet" href="{{ asset('assets/css/portal.css') }}">
     <title>{{ config('app.name', 'PFMS') }}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -352,7 +352,7 @@
 		   				<div class="card">
 		   					<div class="card-body">
 		   						<h2>Welcome To Admin Dashboard </h2>
-		   						<p>Today Date {{Date('Y:M:d')}}</p>
+		   						<p>Today Date {{ Date('Y:M:d') }}</p>
 		   					</div>
 		   				</div>
 		   			</div>
@@ -371,15 +371,15 @@
 
 
     <!-- Javascript -->
-    <script src="{{asset('assets/plugins/popper.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('assets/plugins/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
 
     <!-- Charts JS -->
-    <script src="{{asset('assets/plugins/chart.js/chart.min.js')}}"></script>
-    <script src="{{asset('assets/js/index-charts.js')}}"></script>
+    <script src="{{ asset('assets/plugins/chart.js/chart.min.js') }}"></script>
+    <script src="{{ asset('assets/js/index-charts.js') }}"></script>
 
     <!-- Page Specific JS -->
-    <script src="{{asset('assets/js/app.js')}}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 
 </body>
 </html>

@@ -2,21 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Budget;
 use App\Models\Expenses;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
     //
 
-
-    public function index(){
+    public function index()
+    {
         // $january = Expenses::where('create_at',date('Y-m'));
         $ThreeMonthsExpenses = DB::table('expenses')->whereBetween('created_at', [Carbon::now()
-        ->subMonths(3), Carbon::now()])->sum('expenses_amount');
+            ->subMonths(3), Carbon::now()])->sum('expenses_amount');
 
         // $EachMonthData = [];
         // for ($month = 1; $month <= 12; $month++) {
@@ -34,8 +32,8 @@ class ReportController extends Controller
         // }
 
         $YearlyData = Expenses::select('expenses_amount', 'created_at')
-        ->get()
-        ->sum('expenses_amount');
+            ->get()
+            ->sum('expenses_amount');
 
     // $usermcount = [];
     // $userArr = [];
@@ -58,13 +56,12 @@ class ReportController extends Controller
 // dd($data);
     // return response()->json(array_values($userArr));
 
-
         // Yearly Records
     $YearlyData = DB::table('expenses')
-                ->where('created_at', date('Y'))
-                ->sum('expenses_amount');
+        ->where('created_at', date('Y'))
+        ->sum('expenses_amount');
         // dd($YearlyData);
 
-        return view('reports.expenses',compact('ThreeMonthsExpenses','YearlyData'));
+        return view('reports.expenses', compact('ThreeMonthsExpenses', 'YearlyData'));
     }
 }

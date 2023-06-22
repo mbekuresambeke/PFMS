@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="text-center">
                     <h2>Welcome To Admin Panel</h2>
-                    <h5> Hello {{ Auth::user()->name }}</h5>
+                    <h5> Hello {{ auth()->user()->name }}</h5>
 
                         <p class="alert alert-danger strong">Please Note that this is Administrative Panel You are not allowed to change any thing if you dont
                             have permission</p>

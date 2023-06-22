@@ -2,7 +2,7 @@
 
 @section('content')
     <main>
-      
+
         <div class="d-flex align-items-center justify-content-center vh-10 ">
             <div><img src="{{ asset('cartoon.png') }}" alt="NO PNG FOUND"></div>
             <div class="text-center m-10 ">

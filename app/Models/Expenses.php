@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Expenses extends Model
 {
     use HasFactory;
-    protected  $fillable = ['user_id
-         budget_id','expenses_category_id',
-        'expenses_title','expenses_amount',
-        'expenses_description', 'expenses_date',];
+    protected $fillable = ['user_id
+         budget_id', 'expenses_category_id',
+        'expenses_title', 'expenses_amount',
+        'expenses_description', 'expenses_date', ];
 
     public function budget()
     {
@@ -22,6 +22,7 @@ class Expenses extends Model
     {
         return $this->belongsTo(ExpensesCategory::class);
     }
+
     public function users()
     {
         return $this->belongsTo(User::class);

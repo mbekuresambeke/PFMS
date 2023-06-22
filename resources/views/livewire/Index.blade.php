@@ -23,7 +23,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($debts as $debt)
+                            @foreach ($debts as $debt)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $debt->name }}</td>

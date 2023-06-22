@@ -5,10 +5,10 @@
             <div class="col-md-8 offset-2 p-2 m-2 ">
                 <div class="card">
                     <div class="card-header">Create New Expense Category</div>
-                        @if(session('success'))
+                        @if (session('success'))
                             <div class="col-md-8 offset-2">
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {{session('success')}}
+                                    {{ session('success') }}
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>

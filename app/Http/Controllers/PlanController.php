@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plans;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Plans;
 
 class PlanController extends Controller
 {
@@ -21,10 +21,10 @@ class PlanController extends Controller
         $PendingTasks = Plans::where('action', 'Pending')->get();
         // $PendingTaskSum = Plans::where('action', 'Pending')->sum('');
         $PendingTasksCount = Plans::where('action', 'Pending')->count();
-        $CompletedTasks = Plans::where('action','completed')->get();
-        $CompletedTasksCount = Plans::where('action','completed')->count();
+        $CompletedTasks = Plans::where('action', 'completed')->get();
+        $CompletedTasksCount = Plans::where('action', 'completed')->count();
         // $CompletedTaskSum = Plans::where('action','completed')->sum('');
-        return view('plans.index',compact('onProgressTasks','PendingTasks','CompletedTasks','onProgressTasksCount','PendingTasksCount','CompletedTasksCount'));
+        return view('plans.index', compact('onProgressTasks', 'PendingTasks', 'CompletedTasks', 'onProgressTasksCount', 'PendingTasksCount', 'CompletedTasksCount'));
     }
 
     /**
@@ -40,22 +40,21 @@ class PlanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-      $ValidatedPlan  = $this->validate($request,[
-        'plan_title' => 'required',
-        'plan_estimate_price' =>'required ',
-        'category' =>'required',
-        'duration' =>'required',
-        'plan_status' =>'required',
-        'action' =>'required'
+      $ValidatedPlan = request()->validate($request, [
+          'plan_title' => 'required',
+          'plan_estimate_price' => 'required ',
+          'category' => 'required',
+          'duration' => 'required',
+          'plan_status' => 'required',
+          'action' => 'required',
       ]);
 
       $user_id = auth::user()->id;
-      $plan = new Plans();
+      $plan = new Plans;
       $plan->user_id = $user_id;
       $plan->plan_title = $ValidatedPlan['plan_title'];
       $plan->plan_estimate_price = $ValidatedPlan['plan_estimate_price'];
@@ -64,7 +63,8 @@ class PlanController extends Controller
       $plan->plan_status = $ValidatedPlan['plan_status'];
       $plan->action = $ValidatedPlan['action'];
       $plan->save();
-      return back()->with('success','Plan has been added Successfully');
+
+      return back()->with('success', 'Plan has been added Successfully');
 
     }
 
@@ -93,7 +93,6 @@ class PlanController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

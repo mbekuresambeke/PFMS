@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row justify-content-center">
 <div class="col-md-8 offest-2 ">
-<div class="card"> 
+<div class="card">
     <div class="card-header bg-primary text-center text-white "><h3>Debt Management Module</h3></div>
     <div class="card-body">
         <form wire:submit.prevent="submit">

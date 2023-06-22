@@ -8,7 +8,6 @@ use App\Models\ExpensesCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use function GuzzleHttp\Promise\all;
 
 class ExpensesController extends Controller
 {
@@ -20,18 +19,18 @@ class ExpensesController extends Controller
     public function index()
     {
 
-        $TotalExpenses =  Expenses::with('expenses_category_name')->sum('expenses_amount');
-        $DailyExpenses =  Expenses::whereDate('created_at', Carbon::today())->sum('expenses_amount');
+        $TotalExpenses = Expenses::with('expenses_category_name')->sum('expenses_amount');
+        $DailyExpenses = Expenses::whereDate('created_at', Carbon::today())->sum('expenses_amount');
         $TotalBudgets = budget::sum('budget_amount');
         // dd($DailyExpenses);
-        $expenses = Expenses::with('ExpensesCategory')->where('user_id',auth::user()->id)->orderBy('created_at','desc')->paginate(15);
-        $WeeklyExpenses = Expenses::where( 'created_at', '>', Carbon::now()->subDays(7))->sum('expenses_amount');
-        $MonthlyExpenses = Expenses::whereMonth('created_at',date('m'))->sum('expenses_amount');
-        $percentage_calculator  =  $TotalBudgets - $TotalExpenses / 100;
-        $ExpensesCategory =  Expenses::with('ExpensesCategory')->get();
+        $expenses = Expenses::with('ExpensesCategory')->where('user_id', auth::user()->id)->orderBy('created_at', 'desc')->paginate(15);
+        $WeeklyExpenses = Expenses::where('created_at', '>', Carbon::now()->subDays(7))->sum('expenses_amount');
+        $MonthlyExpenses = Expenses::whereMonth('created_at', date('m'))->sum('expenses_amount');
+        $percentage_calculator = $TotalBudgets - $TotalExpenses / 100;
+        $ExpensesCategory = Expenses::with('ExpensesCategory')->get();
         // dd($ExpensesCategory);
         // dd($percentage_calculator);
-        return view('expenses.index',compact('TotalExpenses','DailyExpenses','WeeklyExpenses','MonthlyExpenses','expenses','percentage_calculator','ExpensesCategory'));
+        return view('expenses.index', compact('TotalExpenses', 'DailyExpenses', 'WeeklyExpenses', 'MonthlyExpenses', 'expenses', 'percentage_calculator', 'ExpensesCategory'));
     }
 
     /**
@@ -44,7 +43,7 @@ class ExpensesController extends Controller
 
         // $user_id = auth::user()->id;
         $ExpensesCategory = ExpensesCategory::all();
-        $expenses = Expenses::with('ExpensesCategory')->where('user_id',auth::user()->id)->orderBy('created_at','desc')->paginate(15);
+        $expenses = Expenses::with('ExpensesCategory')->where('user_id', auth::user()->id)->orderBy('created_at', 'desc')->paginate(15);
         $budgets = Budget::with('expenses')->get();
 
                         // Filter Laravel result using filter function
@@ -61,20 +60,19 @@ class ExpensesController extends Controller
                             $budget->budget_amount;
                         }
 
-        return view('expenses.create',compact('ExpensesCategory','budgets','expenses'));
+        return view('expenses.create', compact('ExpensesCategory', 'budgets', 'expenses'));
 
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
 //        dd('How is it');
-        $ValidExpenses = $this->validate($request, [
+        $ValidExpenses = request()->validate($request, [
             'expenses_title' => 'required',
             'expenses_category' => 'required',
             'expenses_budget' => 'required',
@@ -85,7 +83,7 @@ class ExpensesController extends Controller
 //        dd($ValidExpenses);
 
         $user_id = auth::user()->id;
-        $Expenses = new Expenses();
+        $Expenses = new Expenses;
         $Expenses->user_id = $user_id;
         $Expenses->budget_id = $ValidExpenses['expenses_budget'];
         $Expenses->expenses_category_id = $ValidExpenses['expenses_category'];
@@ -94,7 +92,8 @@ class ExpensesController extends Controller
         $Expenses->expenses_description = $ValidExpenses['expenses_description'];
         $Expenses->expenses_date = $ValidExpenses['expenses_date'];
         $Expenses->save();
-        return back()->with('success','Expenses has been added Successfully');
+
+        return back()->with('success', 'Expenses has been added Successfully');
     }
 
     /**
@@ -107,7 +106,8 @@ class ExpensesController extends Controller
     {
 
         $Expense = Expenses::findorFail($id);
-       return view('expenses.show',compact('Expense'));
+
+       return view('expenses.show', compact('Expense'));
     }
 
     /**
@@ -124,7 +124,6 @@ class ExpensesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -142,9 +141,8 @@ class ExpensesController extends Controller
     public function destroy($id)
     {
 dd(confirm('Are you sure you want to delete this item ???'));
-        $trash_expenses = Expenses::with('budgets','ExpensesCategory','users')->withTrashed()->where('id', $id)->restore();
+        $trash_expenses = Expenses::with('budgets', 'ExpensesCategory', 'users')->withTrashed()->where('id', $id)->restore();
         dd($trash_expenses);
-
 
     }
 }

@@ -37,8 +37,8 @@
             <tr>
 
             {{-- <td>{{number_format($data,2)}}</td> --}}
-            <td>{{number_format($ThreeMonthsExpenses,2)}}</td>
-            <td>{{number_format($YearlyData,2)}}</td>
+            <td>{{ number_format($ThreeMonthsExpenses,2) }}</td>
+            <td>{{ number_format($YearlyData,2) }}</td>
             </tr>
 
 		</table>

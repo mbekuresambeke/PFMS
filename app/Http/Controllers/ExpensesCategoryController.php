@@ -15,9 +15,9 @@ class ExpensesCategoryController extends Controller
      */
     public function index()
     {
-        $All_categories = ExpensesCategory::where('user_id',auth::user()->id)->get();
+        $All_categories = ExpensesCategory::where('user_id', auth::user()->id)->get();
         // dd($All_categories);
-        return view('expenses_category.index',compact('All_categories'));
+        return view('expenses_category.index', compact('All_categories'));
     }
 
     /**
@@ -27,27 +27,27 @@ class ExpensesCategoryController extends Controller
      */
     public function create()
     {
-        return  view('expenses_category.create');
+        return view('expenses_category.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $Newdata = $this->validate($request, [
-            'expenses_cat_name'=> 'required',
-            'expenses_category_desc' => 'required'
+        $Newdata = request()->validate($request, [
+            'expenses_cat_name' => 'required',
+            'expenses_category_desc' => 'required',
         ]);
-        $user_id =  auth::user()->id;
-        $expense_cat  = new ExpensesCategory();
+        $user_id = auth::user()->id;
+        $expense_cat = new ExpensesCategory;
         $expense_cat->user_id = $user_id;
         $expense_cat->expenses_category_name = $request['expenses_cat_name'];
         $expense_cat->expenses_category_desc = $request['expenses_category_desc'];
         $expense_cat->save();
+
         return redirect()->back()->with('success', 'You have successfully added a new data');
     }
 
@@ -76,7 +76,6 @@ class ExpensesCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

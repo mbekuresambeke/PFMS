@@ -4,7 +4,7 @@
         <div class="row justify-content-center ">
             <div class="col-md-8 offset-2 ">
                 <div class="card">
-                    <div class="card-header"><strong>Hi {{ Auth::user()->name }}</strong> Create New Expenses</div>
+                    <div class="card-header"><strong>Hi {{ auth()->user()->name }}</strong> Create New Expenses</div>
                     <div class="card-body mt-2 ">
                         @if (session('success'))
                             <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
@@ -38,10 +38,10 @@
                                 <label>Budgeting Expenses <span style="color:red;">*</span></label>
                                 <select name="expenses_budget" id="" class="form-control">
                                     <option value="#">Choose Budget </option>
-                                   
+
                                     @foreach ($budgets as $budget)
                                     @if ($budget  <  $expenses)
-                                    
+
                                     @else
                                         <option value="{{ $budget->id }}">Tsh
                                             {{ number_format($budget->budget_amount, 2) }}</option>
